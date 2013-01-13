@@ -115,10 +115,10 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django.contrib.admin',
+    'django.contrib.admindocs',
+    'south',
+    'django_extensions',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -149,3 +149,46 @@ LOGGING = {
         },
     }
 }
+
+#try:
+#    from local_settings import *
+#except ImportError:
+#    pass
+
+USE_LOCAL_FILE = True
+#USE_LOCAL_FILE uses True by default but can be set to false to ignore local settings and testing production settings
+
+try:
+    from .local_settings import *
+    from .utils.merge import merge
+
+    if USE_LOCAL_FILE:
+        try:
+            INSTALLED_APPS = INSTALLED_APPS + LOCAL_INSTALLED_APPS
+        except Exception, e:
+            pass
+
+        try:
+            TEMPLATE_DIRS = TEMPLATE_DIRS + LOCAL_TEMPLATE_DIRS
+        except Exception, e :
+            pass
+
+        try:
+            MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + LOCAL_MIDDLEWARE_CLASSES
+        except Exception, e :
+            pass
+
+        try:
+            LOGGING = merge(LOGGING,LOCAL_LOG_OVERRIDE)
+        except Exception, e:
+            #print 'No local log settings found, is this production?'
+            pass
+
+        try:
+            CACHES = merge(CACHES,LOCAL_CACHES)
+        except Exception, e:
+            pass
+
+except Exception, e:
+    import logging
+    logging.warn('No local settings found... please use samples in the "configuration" directory for bootstrapping')

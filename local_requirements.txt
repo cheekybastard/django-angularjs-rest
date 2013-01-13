@@ -1,0 +1,17 @@
+Django==1.4.3
+Markdown==2.2.1
+PyYAML==3.10
+Pygments==1.6rc1
+Werkzeug==0.8.3
+django-braces==0.1.5
+django-debug-toolbar==0.9.4
+django-devserver==0.4.0
+django-extensions==1.0.2
+django-filter==0.5.4
+django-profiletools==0.2.1
+djangorestframework==2.1.15
+docutils==0.10
+ipython==0.13.1
+line-profiler==1.0b3
+sqlparse==0.1.6
+wsgiref==0.1.2

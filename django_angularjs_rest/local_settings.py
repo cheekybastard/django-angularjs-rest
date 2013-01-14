@@ -32,6 +32,7 @@ LOCAL_INSTALLED_APPS = (
     'django_extensions',
     'debug_toolbar',
     'werkzeug',
+    'lettuce.django',
     )
 
 LOCAL_MIDDLEWARE_CLASSES = (

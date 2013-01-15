@@ -14,15 +14,15 @@ Django + AngularJS + django-rest-framework + Twitter Bootstrap(angular-ui) proje
     http://splinter.cobrateam.info/docs/
 
 Test of Django Project Example:
-https://github.com/gabrielfalcao/lettuce/tree/master/tests/integration/django/alfaces/
+    https://github.com/gabrielfalcao/lettuce/tree/master/tests/integration/django/alfaces/
 
 <h3>Run Test</h3>
 Example:
-user@machine:~projects/djangoproject $ python manage.py harvest
+    user@machine:~projects/djangoproject $ python manage.py harvest
 
 <h3>Specifying feature files</h3>
 Example:
-user@machine:~projects/djangoproject $ python manage.py harvest path/to/my-test.feature
+    user@machine:~projects/djangoproject $ python manage.py harvest path/to/my-test.feature
 
 <h1>devserver runserver commands:</h1>
 https://github.com/dcramer/django-devserver

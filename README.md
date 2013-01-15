@@ -8,7 +8,6 @@ Django + AngularJS + django-rest-framework + Twitter Bootstrap(angular-ui) proje
 https://github.com/wieden-kennedy/salad
 https://github.com/gabrielfalcao/lettuce
 http://github.com/cobrateam/splinter/
-
 http://cilliano.com/blog/2011/02/07/django-bdd-with-lettuce-and-splinter/
 http://lettuce.it/
 http://splinter.cobrateam.info/docs/

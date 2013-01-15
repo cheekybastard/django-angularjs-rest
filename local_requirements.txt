@@ -2,6 +2,7 @@ Django==1.4.3
 Markdown==2.2.1
 PyYAML==3.10
 Pygments==1.6rc1
+South==0.7.6
 Werkzeug==0.8.3
 django-braces==0.1.5
 django-debug-toolbar==0.9.4
@@ -11,7 +12,15 @@ django-filter==0.5.4
 django-profiletools==0.2.1
 djangorestframework==2.1.15
 docutils==0.10
+fuzzywuzzy==0.1
 ipython==0.13.1
+lettuce==0.2.12
 line-profiler==1.0b3
+lxml==2.3.6
+pyzmq==2.2.0.1
+selenium==2.28.0
+splinter==0.4.9
 sqlparse==0.1.6
+sure==1.1.4
+tornado==2.4.1
 wsgiref==0.1.2

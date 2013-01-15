@@ -1,7 +1,15 @@
 django-angularjs-rest
 =====================
 
-Django + AngularJS + django-rest-framework + Twitter Bootstrap(angular-ui) project starter/demo.
+Django + AngularJS + Django-Rest-Framework + Twitter Bootstrap(angular-ui) project starter/demo.
+
+<h1>Angular-UI Bootstrap</h1>
+https://github.com/angular-ui/bootstrap
+    "aiming at providing a set of AngularJS directives based on Twitter's bootstrap markup and CSS. The goal is to provide native AngularJS directives without any dependency on jQquery or Bootstrap's JavaScript. It is often better to rewrite an existing JavaScript code and create a new, pure AngularJS directive. Most of the time the resulting directive is smaller as compared to the orginal JavaScript code size and better integrated into the AngularJS ecosystem."
+
+Why replace bootstrap jquery?
+    For me, AngularJS applications are noticeably quicker then other JS frameworks ( aka. Snappy app reactions are sexy).
+    http://jsperf.com/angular-vs-knockout-vs-ember/2
 
 <h1>Behaviour-driven development with Salad: aka Lettuce & Splinter</h1>
 
@@ -47,4 +55,26 @@ http://ipython.org/ipython-doc/dev/interactive/htmlnotebook.html
         tornado
         pip install pyzmq --install-option="--zmq=bundled"
 
-<h1></h1>
+<h1>Copyright and license</h1>
+
+    The MIT License
+
+    Copyright (c) 2012 CheekyBastard
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.

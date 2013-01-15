@@ -97,10 +97,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'django_angularjs_rest.urls'
+ROOT_URLCONF = 'django_angularjs.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'django_angularjs_rest.wsgi.application'
+WSGI_APPLICATION = 'django_angularjs.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".

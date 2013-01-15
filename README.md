@@ -13,24 +13,24 @@ Why replace bootstrap jquery?
 
 <h1>Behaviour-driven development with Salad: aka Lettuce & Splinter</h1>
 
-https://github.com/wieden-kennedy/salad
-https://github.com/gabrielfalcao/lettuce
-http://github.com/cobrateam/splinter/
-
-http://cilliano.com/blog/2011/02/07/django-bdd-with-lettuce-and-splinter/
-http://lettuce.it/
-http://splinter.cobrateam.info/docs/
+    https://github.com/wieden-kennedy/salad
+    https://github.com/gabrielfalcao/lettuce
+    http://github.com/cobrateam/splinter/
+    
+    http://cilliano.com/blog/2011/02/07/django-bdd-with-lettuce-and-splinter/
+    http://lettuce.it/
+    http://splinter.cobrateam.info/docs/
 
 Test of Django Project Example:
-https://github.com/gabrielfalcao/lettuce/tree/master/tests/integration/django/alfaces/
+    https://github.com/gabrielfalcao/lettuce/tree/master/tests/integration/django/alfaces/
 
 <h3>Run Test</h3>
 Example:
-user@machine:~projects/djangoproject $ python manage.py harvest
+    user@machine:~projects/djangoproject $ python manage.py harvest
 
 <h3>Specifying feature files</h3>
 Example:
-user@machine:~projects/djangoproject $ python manage.py harvest path/to/my-test.feature
+    user@machine:~projects/djangoproject $ python manage.py harvest path/to/my-test.feature
 
 <h1>devserver runserver commands:</h1>
 https://github.com/dcramer/django-devserver

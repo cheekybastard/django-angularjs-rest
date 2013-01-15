@@ -5,12 +5,13 @@ Django + AngularJS + django-rest-framework + Twitter Bootstrap(angular-ui) proje
 
 <h1>Behaviour-driven development with Salad: aka Lettuce & Splinter</h1>
 
-https://github.com/wieden-kennedy/salad
-https://github.com/gabrielfalcao/lettuce
-http://github.com/cobrateam/splinter/
-http://cilliano.com/blog/2011/02/07/django-bdd-with-lettuce-and-splinter/
-http://lettuce.it/
-http://splinter.cobrateam.info/docs/
+    https://github.com/wieden-kennedy/salad
+    https://github.com/gabrielfalcao/lettuce
+    http://github.com/cobrateam/splinter/
+    
+    http://cilliano.com/blog/2011/02/07/django-bdd-with-lettuce-and-splinter/
+    http://lettuce.it/
+    http://splinter.cobrateam.info/docs/
 
 Test of Django Project Example:
 https://github.com/gabrielfalcao/lettuce/tree/master/tests/integration/django/alfaces/

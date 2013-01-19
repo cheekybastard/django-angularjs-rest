@@ -103,6 +103,7 @@ ROOT_URLCONF = 'django_angularjs_rest.urls'
 WSGI_APPLICATION = 'django_angularjs_rest.wsgi.application'
 
 TEMPLATE_DIRS = (
+    "/home/compaq/django-angularjs/django_angularjs_rest/templates",
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

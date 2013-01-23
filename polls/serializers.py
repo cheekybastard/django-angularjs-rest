@@ -5,7 +5,7 @@ from polls import models
 class PollSerializer(serializers.Serializer):
     pk = serializers.Field()  # Note: `Field` is an untyped read-only field.
     question = serializers.CharField(max_length=200)
-    pub_date = serializers.DateTimeField('date published')
+    pub_date = serializers.DateTimeField()
 
     def restore_object(self, attrs, instance=None):
         """

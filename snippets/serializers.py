@@ -1,6 +1,6 @@
 from django.forms import widgets
 from rest_framework import serializers
-from snippets.models import Snippet
+from .models import Snippet
 
 class SnippetSerializer(serializers.Serializer):
     pk = serializers.Field()  # Note: `Field` is an untyped read-only field.

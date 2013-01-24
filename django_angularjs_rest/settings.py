@@ -122,6 +122,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'polls',
     'rest_framework',
+    'snippets',
 )
 
 REST_FRAMEWORK = {

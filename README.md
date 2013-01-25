@@ -1,3 +1,6 @@
+Please Note: Project is not working as yet.
+
+
 django-angularjs-rest
 =====================
 

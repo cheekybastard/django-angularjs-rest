@@ -1,4 +1,7 @@
+
 Please Note: Project is not working as yet.
+
+Under Construction
 
 
 django-angularjs-rest

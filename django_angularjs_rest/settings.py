@@ -123,10 +123,11 @@ INSTALLED_APPS = (
     'polls',
     'rest_framework',
     'snippets',
+    'quickstart',
 )
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    #'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
     'PAGINATE_BY': 10
 }
 

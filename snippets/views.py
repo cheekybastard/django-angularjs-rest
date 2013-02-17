@@ -1,44 +1,76 @@
-from django.contrib.auth.models import User, Group
+from models import Snippet
+from django.contrib.auth.models import User
+from serializers import SnippetSerializer, UserSerializer
 from rest_framework import generics
+from rest_framework import permissions
+from permissions import IsOwnerOrReadOnly
+from rest_framework import renderers
 from rest_framework.decorators import api_view
-from rest_framework.reverse import reverse
 from rest_framework.response import Response
-from quickstart.serializers import UserSerializer, GroupSerializer
+from rest_framework.reverse import reverse
 
-@api_view(['GET'])
+@api_view(('GET',))
 def api_root(request, format=None):
-    """
-    The entry endpoint of our API.
-    """
     return Response({
-        'users': reverse('user-list', request=request),
-        'groups': reverse('group-list', request=request),
-        })
+        'users':reverse('user-list', request=request, format=format),
+        'snippets': reverse('snippet-list', request=request, format=format)
+    })
 
-class UserList(generics.ListCreateAPIView):
-    """
-    API endpoint that represents a list of users.
-    """
+class UserList(generics.ListAPIView):
     model = User
     serializer_class = UserSerializer
 
-class UserDetail(generics.RetrieveUpdateDestroyAPIView):
-    """
-    API endpoint that represents a single user.
-    """
+class UserInstance(generics.RetrieveAPIView):
     model = User
     serializer_class = UserSerializer
 
-class GroupList(generics.ListCreateAPIView):
+class SnippetList(generics.ListCreateAPIView):
     """
-    API endpoint that represents a list of groups.
+    list all snippets, or create a new snippet.
     """
-    model = Group
-    serializer_class = GroupSerializer
+    model = Snippet
+    serializer_class = SnippetSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
-class GroupDetail(generics.RetrieveUpdateDestroyAPIView):
+    def pre_save(self, obj):
+        obj.owner = self.request.user
+
+class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
     """
-    API endpoint that represents a single group.
+    retrieve, update or delete a snippet instance
     """
-    model = Group
-    serializer_class = GroupSerializer
+    model = Snippet
+    serializer_class = SnippetSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+                          IsOwnerOrReadOnly,)
+
+    def pre_save(self, obj):
+        obj.owner = self.request.user
+
+class SnippetHighlight(generics.SingleObjectAPIView):
+    model = Snippet
+    renderer_classes = (renderers.StaticHTMLRenderer,)
+
+    def get(self, request, *args, **kwargs):
+        snippet = self.get_object()
+        return Response(snippet.highlighted)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

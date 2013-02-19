@@ -1,43 +1,21 @@
 from django.forms import widgets
 from rest_framework import serializers
-from polls import models
+from .models import Poll, Choice
 
-class PollSerializer(serializers.Serializer):
-    pk = serializers.Field()  # Note: `Field` is an untyped read-only field.
-    question = serializers.CharField(max_length=200)
-    pub_date = serializers.DateTimeField()
+class PollSerializer(serializers.HyperlinkedModelSerializer):
+    voting = serializers.HyperlinkedRelatedField(many=True, view_name='poll-detail')
 
-    def restore_object(self, attrs, instance=None):
-        """
-        Create or update a new snippet instance.
-        """
-        if instance:
-            # Update existing instance
-            instance.question = attrs['question']
-            instance.pub_date = attrs['pub_date']
-            return instance
+    class Meta:
+        model = Poll
+        fields = ('question', 'pub_date')
 
-        # Create new instance
-        return models.Poll(**attrs)
+class ChoiceSerializer(serializers.HyperlinkedModelSerializer):
 
-class ChoiceSerializer(serializers.Serializer):
-    pk = serializers.Field()  # Note: `Field` is an untyped read-only field.
-    choice_text = serializers.CharField(max_length=200)
-    votes = serializers.IntegerField()
+    class Meta:
+        model = Choice
+        fields = ('poll', 'choice_text', 'votes')
 
-    def restore_object(self, attrs, instance=None):
-        """
-        Create or update a new snippet instance.
-        """
-        if instance:
-            # Update existing instance
-            instance.choice_text = attrs['choice_text']
-            instance.votes = attrs['votes']
-            return instance
-
-        # Create new instance
-        return models.Choice(**attrs)
-
+# votes = serializers.Field(source='votes')
 """class Poll(models.Model):
     question = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')

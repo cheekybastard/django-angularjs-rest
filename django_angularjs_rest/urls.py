@@ -15,3 +15,14 @@ urlpatterns = patterns('',
      #url(r'^', include('quickstart.urls')),
      url(r'^', include('snippets.urls')),
 )
+
+"""
+if is_installed('api'):
+    from api import api
+    api.autodiscover()
+
+    urlpatterns += patterns('',
+        url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+        url(r'^api-token-auth/', 'rest_framework.authtoken.views.obtain_auth_token'),
+        url(r'^api/', include(api.urls)),)
+"""

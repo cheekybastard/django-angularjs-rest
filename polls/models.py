@@ -1,4 +1,6 @@
 from django.db import models
+import datetime
+from django.utils import timezone
 
 class Poll(models.Model):
     question = models.CharField(max_length=200)
@@ -14,7 +16,7 @@ class Poll(models.Model):
     was_published_recently.short_description = 'Published recently?'
 
 class Choice(models.Model):
-    poll = models.ForeignKey(Poll)
+    poll = models.ForeignKey(Poll, related_name='voting')
     choice_text = models.CharField(max_length=200)
     votes = models.IntegerField()
 

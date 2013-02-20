@@ -77,9 +77,6 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = '#@u$_+2hw08x1ig0gp#7vvw*$jp!wiwm+9#*@7noxgs3(n1n&amp;e'
-
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -118,6 +115,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'djset',
     'south',
     'django_extensions',
     'polls',
@@ -130,6 +128,11 @@ REST_FRAMEWORK = {
     #'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
     'PAGINATE_BY': 10
 }
+
+from djset import secret as s
+s.prompt = DEBUG
+SECRET_KEY = s.get('SECRET_KEY')
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

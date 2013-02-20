@@ -1,4 +1,7 @@
 from django.views.generic import TemplateView
+from django.shortcuts import get_object_or_404, render
+from django.http import HttpResponseRedirect, HttpResponse
+from django.core.urlresolvers import reverse
 from rest_framework import generics
 from rest_framework import permissions
 #from permissions import IsOwnerOrReadOnly
@@ -14,23 +17,46 @@ class HomeView(TemplateView):
 
 class PollList(generics.ListCreateAPIView):
     """
-    list all polls, or create a new poll.
+    list all polls.
     """
     model = Poll
     serializer_class = PollSerializer
     #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+    def vote(request, poll_id):
+        p = get_object_or_404(Poll, pk=poll_id)
+        try:
+            selected_choice = p.choice_set.get(pk=request.POST['choice'])
+        except (KeyError, Choice.DoesNotExist):
+            # Redisplay the poll voting form.
+            return render(request, 'polls/detail.html', {
+                'poll': p,
+                'error_message': "You didn't select a choice.",
+                })
+        else:
+            selected_choice.votes += 1
+            selected_choice.save()
+            # Always return an HttpResponseRedirect after successfully dealing
+            # with POST data. This prevents data from being posted twice if a
+            # user hits the Back button.
+            return HttpResponseRedirect(reverse('polls:results', args=(p.id,)))
 
     #def pre_save(self, obj):
     #    obj.owner = self.request.user
 
 class PollDetail(generics.RetrieveUpdateDestroyAPIView):
     """
-    retrieve, update or delete a poll instance
+    retrieve results poll instance
     """
     model = Choice
     serializer_class = ChoiceSerializer
     #permission_classes = (permissions.IsAuthenticatedOrReadOnly,
     #                      IsOwnerOrReadOnly,)
+
+    def results(request, poll_id):
+        poll = get_object_or_404(Poll, pk=poll_id)
+        return render(request, 'polls/results.html', {'poll': poll})
+
 
     #def pre_save(self, obj):
     #    obj.owner = self.request.user

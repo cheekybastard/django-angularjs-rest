@@ -1,14 +1,17 @@
 
 from django.conf.urls import patterns, url
+from rest_framework.urlpatterns import format_suffix_patterns
 #from django.views.generic import DetailView, ListView
 from .views import PollList, PollDetail
 
-urlpatterns = patterns('',
+urlpatterns = format_suffix_patterns(patterns('',
                        url(r'^$', PollList.as_view(), name='poll-list'),
                        url(r'^(?P<pk>\d+)/$', PollDetail.as_view(), name='choice-detail'),
                        url(r'^(?P<pk>\d+)/results/$', PollDetail.as_view(), name='choice-detail'),
                        #url(r'^(?P<poll_id>\d+)/vote/$', , name=''),
-                       )
+                       ))
+
+#urlpatterns = format_suffix_patterns(urlpatterns, allowed=['json', 'html'])
 
 """
 urlpatterns = patterns('',

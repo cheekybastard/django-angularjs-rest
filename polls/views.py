@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from rest_framework import generics
+from rest_framework import renderers
 from rest_framework import permissions
 #from permissions import IsOwnerOrReadOnly
 from .serializers import PollSerializer, ChoiceSerializer
@@ -21,6 +22,7 @@ class PollList(generics.ListCreateAPIView):
     """
     model = Poll
     serializer_class = PollSerializer
+    #renderer_classes = (JSONRenderer, JSONPRenderer) <= needs APIView class
     #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def vote(request, poll_id):

@@ -124,9 +124,15 @@ INSTALLED_APPS = (
     'quickstart',
 )
 
+
 REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        #'rest_framework.renderers.YAMLRenderer',
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ),
     #'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
-    'PAGINATE_BY': 10
+    #'PAGINATE_BY': 10
 }
 
 from djset import secret as s

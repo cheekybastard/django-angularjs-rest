@@ -3,20 +3,57 @@ from rest_framework import serializers
 from .models import Poll, Choice
 
 class PollSerializer(serializers.HyperlinkedModelSerializer):
-    voting = serializers.HyperlinkedRelatedField(many=True, view_name='poll-detail')
+    poll = serializers.HyperlinkedRelatedField(many=True, view_name='poll-detail')
 
     class Meta:
         model = Poll
         fields = ('question', 'pub_date')
 
 class ChoiceSerializer(serializers.HyperlinkedModelSerializer):
+    highlight = serializers.HyperlinkedIdentityField(view_name='snippet-highlight', format='html')
 
     class Meta:
         model = Choice
         fields = ('poll', 'choice_text', 'votes')
 
 # votes = serializers.Field(source='votes')
-"""class Poll(models.Model):
+"""
+##### SERIALIZERS #####
+class ChoiceSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Choice
+        fields = ('url', 'poll', 'text')
+        read_only_fields = ('poll',)
+
+
+class PollSerializer(serializers.HyperlinkedModelSerializer):
+    choices = serializers.ManyHyperlinkedRelatedField(
+        source = 'choice_set',
+        view_name = 'choice-detail',
+        read_only = True
+    )
+
+    class Meta:
+        model = Poll
+        fields = ('url', 'name', 'question', 'choices')
+
+
+class VoteSerializer(serializers.HyperlinkedModelSerializer):
+#    choices = serializers.HyperlinkedIdentityField(
+#        view_name = 'poll-choice-list',
+#        pk_url_kwarg = 'poll_id'
+#    )
+
+    class Meta:
+        model = Vote
+        fields = ('url', 'choices')
+
+
+
+
+
+
+class Poll(models.Model):
     question = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
 

@@ -17,6 +17,15 @@ Why replace bootstrap jquery?
     For me, AngularJS applications are noticeably quicker then other JS frameworks ( aka. Snappy app reactions are sexy).
     http://jsperf.com/angular-vs-knockout-vs-ember/2
 
+$$$$$$$$$$ angularJS $$$$$$$$$$$$$$$
+
+http://docs.angularjs.org/api/ngResource.$resource
+
+A factory which creates a resource object that lets you interact with RESTful server-side data sources.
+The returned resource object has action methods which provide high-level behaviors without the need to interact with the low level $http service.
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
 <h1>Behaviour-driven development with Salad: aka Lettuce & Splinter</h1>
 
     https://github.com/wieden-kennedy/salad

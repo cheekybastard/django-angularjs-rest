@@ -67,6 +67,50 @@ class PollDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 """
+
+class ChoiceList(generics.ListCreateAPIView):
+    model = Choice
+    serializer_class = ChoiceSerializer
+#    paginate_by = 10
+
+    def pre_save(self, obj):
+        poll_id = self.kwargs.get('poll_id')
+        obj.poll = Poll.objects.get(pk=poll_id)
+
+    def get_queryset(self):
+        poll_id = self.kwargs.get('poll_id')
+        return Choice.objects.filter(poll=poll_id)
+
+
+class VoteList(generics.ListCreateAPIView):
+    model = Vote
+    serializer_class = VoteSerializer
+    paginate_by = 10
+
+    def pre_save(self, obj):
+        obj.user = self.request.user
+        poll_id = self.kwargs.get('poll_id')
+        obj.poll = Poll.objects.get(pk=poll_id)
+
+    def get_queryset(self):
+        user = self.request.user
+        poll_id = self.kwargs.get('poll_id')
+        return Vote.objects.filter(user=user, poll=poll_id)
+
+# class ChoiceSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Choice
+        fields = ('url', 'poll', 'text')
+        read_only_fields = ('poll',)
+
+
+
+
+
+
+
+
+
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
